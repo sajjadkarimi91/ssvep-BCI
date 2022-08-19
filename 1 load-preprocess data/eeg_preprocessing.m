@@ -19,7 +19,7 @@ for i = num_subjects
 
     all_record_names = dir([data_path,'*.gdf']);
     all_epoched = [];
-    all_labels =[];
+    class_labels =[];
 
     for k=1:size(all_record_names,1)
 
@@ -54,24 +54,24 @@ for i = num_subjects
 
         eeg_temp = pop_epoch( EEG , { '33025'  }, [ -0.5   5.5], 'epochinfo', 'yes');
         all_epoched = cat(3,all_epoched, eeg_temp.data);
-        all_labels = [all_labels;ones(size(eeg_temp.data,3),1)];
+        class_labels = [class_labels;ones(size(eeg_temp.data,3),1)];
 
         eeg_temp = pop_epoch( EEG , { '33026'  }, [ -0.5   5.5], 'epochinfo', 'yes');
         all_epoched = cat(3,all_epoched, eeg_temp.data);
-        all_labels = [all_labels;2*ones(size(eeg_temp.data,3),1)];
+        class_labels = [class_labels;2*ones(size(eeg_temp.data,3),1)];
 
         eeg_temp = pop_epoch( EEG , { '33027'  }, [ -0.5   5.5], 'epochinfo', 'yes');
         all_epoched = cat(3,all_epoched, eeg_temp.data);
-        all_labels = [all_labels;3*ones(size(eeg_temp.data,3),1)];
+        class_labels = [class_labels;3*ones(size(eeg_temp.data,3),1)];
 
         eeg_temp = pop_epoch( EEG , { '33024'  }, [ -0.5   5.5], 'epochinfo', 'yes');
         all_epoched = cat(3,all_epoched, eeg_temp.data);
-        all_labels = [all_labels;4*ones(size(eeg_temp.data,3),1)];
+        class_labels = [class_labels;4*ones(size(eeg_temp.data,3),1)];
 
 
     end
 
-    save([save_dir,'/',this_name,'.mat'],'all_labels','all_epoched','srate','target_frequencies');
+    save([save_dir,'/',this_name,'.mat'],'class_labels','all_epoched','srate','target_frequencies');
 
 end
 

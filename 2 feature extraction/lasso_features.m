@@ -48,7 +48,7 @@ for i = num_subjects
     if exist([save_dir,'/lasso_features'],"dir")==0
         mkdir([save_dir,'/lasso_features'])
     end
-    save([save_dir,'/lasso_features/cca_sub',num2str(i),'.mat'],'ssvep_features');
+    save([save_dir,'/lasso_features/sub',num2str(i),'.mat'],'ssvep_features','class_labels');
 
 
 end
