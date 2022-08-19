@@ -10,7 +10,7 @@ dataset_dir = 'D:\PHD codes\DataSets\dataset-ssvep-exoskeleton';
 save_dir = [pwd,'/epoched_clean_data'];
 
 num_subjects = 1:12; % participants number
-eeg_channels = 1:8; % eeg channel numbers
+eeg_channels = 1:8; % eeg channel numbers 10/20 system on Oz, O1, O2, POz, PO3, PO4, PO7 and PO8.
 max_class = 3; % 
 
 %%  Start load, preprocessing & extracting epochs
@@ -19,9 +19,11 @@ eeg_preprocessing;
 
 %% Ready for feature extraction
 close all
-k_pairs = [1,2,3];% for different CSP feature generation
 
-feature_extraction_OVR;
+cca_features;
+
+lasso_features;
+
 
 %% classification naive-Bayes or SVMs
 close all
